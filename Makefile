@@ -10,7 +10,7 @@ instrumented:
 	go test -o ../../bin/covtest.coverage -c -covermode=count -coverpkg ./... ./cmd
 
 run:
-	 ../../bin/covtest.coverage -test.coverprofile=$(COVERAGE_FILE) run_instrumented_binary
+	 ../../bin/covtest.coverage -test.coverprofile=$(COVERAGE_FILE)
 
 check:
 	curl -X GET localhost:8080/two

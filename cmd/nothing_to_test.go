@@ -8,10 +8,6 @@ import (
 	"testing"
 )
 
-func TestNothing(t *testing.T) {
-
-}
-
 // TestMain is a alternate entry point
 func TestMain(m *testing.M) {
 	// Parse the command line using the stdlib flag package so the flags
@@ -19,17 +15,12 @@ func TestMain(m *testing.M) {
 	// -coverprofile flag.
 	flag.Parse()
 
-	runMain := false
-
 	// Strip command line arguments that were for the testing package and
 	// that are now handled. This will remove arguments that wouldn't be
 	// recognised when using a 3rd party command line parser like
 	// github.com/urfave/cli.
 	var programArgs []string
 	for _, arg := range os.Args {
-		if arg == "run_instrumented_binary" {
-			runMain = true
-		}
 		if strings.HasPrefix(arg, "-test.") ||
 			strings.HasPrefix(arg, "-httptest.") {
 			continue
@@ -44,9 +35,7 @@ func TestMain(m *testing.M) {
 	// panic(path.Base(os.Args[0]))
 	if path.Base(os.Args[0]) == "covtest" ||
 		path.Base(os.Args[0]) == "covtest.coverage" {
-		if runMain {
-			main()
-		}
+		main()
 		return
 	}
 
