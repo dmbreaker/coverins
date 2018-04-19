@@ -14,6 +14,8 @@ func (d dummyTestDeps) StopCPUProfile()                             {}
 func (d dummyTestDeps) WriteHeapProfile(io.Writer) error            { return nil }
 func (d dummyTestDeps) WriteProfileTo(string, io.Writer, int) error { return nil }
 func (d dummyTestDeps) ImportPath() string                          { return "" }
+func (d dummyTestDeps) StartTestLog(io.Writer)                      {}
+func (d dummyTestDeps) StopTestLog() error                          { return nil }
 
 // Flusher ...
 type Flusher struct{}
